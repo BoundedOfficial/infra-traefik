@@ -1,0 +1,30 @@
+# traefik.yml - static configuration
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+api:
+  dashboard: true
+  # Safe here because 8080 is only bound to the VPN interface in docker-compose
+  insecure: true
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+
+# ACME Let's Encrypt configuration using Cloudflare DNS-01
+certificatesResolvers:
+  le:
+    acme:
+      email: ${ACME_EMAIL}
+      storage: /acme.json
+      dnsChallenge:
+        provider: cloudflare
+        # Optional:
+        # resolvers:
+        #   - "1.1.1.1:53"
+        #   - "8.8.8.8:53"
