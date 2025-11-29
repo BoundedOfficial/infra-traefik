@@ -31,7 +31,7 @@ traefik.yml            # Static Traefik configuration
 - Traefik auto-discovers routes  
 
 ### ✔ Secure Dashboard Access (VPN Only)
-- Dashboard bound only to WireGuard interface (e.g. `10.8.0.1:8080`)  
+- Dashboard bound only to WireGuard interface (e.g. `10.x.x.x:8080`)  
 - Not exposed publicly  
 
 ### ✔ Secret Handling

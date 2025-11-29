@@ -21,7 +21,7 @@ services:
       - "443:443"
 
       # Traefik dashboard bound to VPN interface only.
-      - "10.8.0.1:8080:8080"
+      - "10.x.x.x:8080:8080" #Replace with your VPN interface IP
 
     volumes:
       # So Traefik can see Docker labels from other containers
@@ -34,11 +34,11 @@ services:
       - ./acme/acme.json:/acme.json
 
     networks:
-      - bounded-net
+      - my-network #Replace with your network name
 
     restart: unless-stopped
 
 networks:
   # Shared external network used by Traefik and app stacks
-  bounded-net:
+  my-network: #Replace with your network name
     external: true
